@@ -31,7 +31,7 @@
       //take rpsValue corresponding to the selected object
 
       let roundValue = (3 + playerSelection - computerSelection) % 3;
-      
+      console.log("playRound round value "+ roundValue)
       let result;
 
       let computerPoint = 0;
@@ -39,16 +39,19 @@
 
       switch (roundValue) {
         case 0:
-        result = "Equality: you both chose " + playerSelection;
+          result = "Equality: you both chose " + playerSelection;
+          break;
         case 1:
-        result = "You win !: " + playerSelection + "beats " + computerSelection;
-        playerPoint += 1;
+          result = "You win !: " + playerSelection + " beats " + computerSelection;
+          playerPoint += 1;
+          break;
         case 2:
-        result = "You Loose :-(: " + computerSelection + "beats " + playerSelection;
-        computerPoint += 1;
+          result = "You Loose :-(: " + computerSelection + " beats " + playerSelection;
+          computerPoint += 1;
+          break;          
       }
 
-      return result, playerPoint, computerPoint;
+      return [result, playerPoint, computerPoint];
     }
 
 
@@ -60,12 +63,13 @@
 
       let playerScore = 0;
       let computerScore = 0;
+      
 
       for (i=1; i<=5; i++) {
         console.log("Round: " + i);
 
-        roundResult = playRound(playerPlay(), computerPlay());
-        console.log(roundResult[0]);
+        let roundResult = playRound(playerPlay(), computerPlay());
+        console.log(roundResult);
 
         playerScore += roundResult[1];
         computerScore += roundResult[2];
@@ -78,7 +82,7 @@
       } else if (playerScore == computerScore) {
         console.log("NO WINNERS");
       } else {
-        console.log(" You loose :-(")
+        console.log(" You loose :-(, try again.")
       }
 
     }
