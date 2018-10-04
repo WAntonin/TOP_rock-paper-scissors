@@ -11,8 +11,7 @@
     function computerPlay() {
 
       let computerValue = Math.floor(Math.random() * Math.floor(3));
-      console.log(computerValue)
-      return rpsValues[computerValue];
+      return computerValue;
     }
 
 
@@ -21,9 +20,7 @@
     function playerPlay() {
 
       let input = prompt("Rock, Paper or Scissors?");
-
-      console.log(input);
-      return input.toLowerCase();
+      return rpsValues[input.toLowerCase()];
 
     }
 
@@ -31,9 +28,10 @@
 
 
     function playRound(playerSelection, computerSelection) {
+      //take rpsValue corresponding to the selected object
 
-      let roundValue = (3 + rpsValues[playerSelection] - rpsValues[computerSelection]) % 3;
-      console.log(roundValue);
+      let roundValue = (3 + playerSelection - computerSelection) % 3;
+      
       let result;
 
       let computerPoint = 0;
