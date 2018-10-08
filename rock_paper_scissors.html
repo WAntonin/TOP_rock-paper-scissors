@@ -7,7 +7,11 @@
   <script>
 
     let rpsValues = {rock: 0, paper: 1, scissors:2};
-    
+    let valuesRps = {0: rock, 1: paper, 2: scissors};
+
+
+
+
     function computerPlay() {
 
       let computerValue = Math.floor(Math.random() * Math.floor(3));
@@ -18,7 +22,7 @@
 
 
     function playerPlay() {
-
+      
       let input = prompt("Rock, Paper or Scissors?");
       return rpsValues[input.toLowerCase()];
 
@@ -28,25 +32,28 @@
 
 
     function playRound(playerSelection, computerSelection) {
-      //take rpsValue corresponding to the selected object
+      //take rpsValue corresponding to the selected object (rock=0, paper=1, scissors=2)
 
       let roundValue = (3 + playerSelection - computerSelection) % 3;
       console.log("playRound round value "+ roundValue)
-      let result;
 
+      let rpsValues = {rock: 0, paper: 1, scissors:2};
+      let valuesRps = {0: 'rock', 1: 'paper', 2: 'scissors'};
+      let result;
+      
       let computerPoint = 0;
       let playerPoint = 0;
 
       switch (roundValue) {
         case 0:
-          result = "Equality: you both chose " + playerSelection;
+          result = "Equality: you both chose " + valuesRps[playerSelection];
           break;
         case 1:
-          result = "You win !: " + playerSelection + " beats " + computerSelection;
+          result = "You win !: " + valuesRps[playerSelection] + " beats " + valuesRps[computerSelection];
           playerPoint += 1;
           break;
         case 2:
-          result = "You Loose :-(: " + computerSelection + " beats " + playerSelection;
+          result = "You Loose :-(: " + valuesRps[computerSelection] + " beats " + valuesRps[playerSelection];
           computerPoint += 1;
           break;          
       }
