@@ -2,6 +2,8 @@
 <html>
 <head>
   <title>Page Title</title>
+  <link rel = "stylesheet" type = "text/css" href = "fonts_style.css">
+  <link rel = "stylesheet" type = "text/css" href = "style.css">
 </head>
 <body>
 
@@ -21,13 +23,14 @@
 
 
 
-  <script>
+  <script type = 'text/javascript'>
 
     let rock = document.getElementById('rock');
     let paper = document.getElementById('paper');
     let scissors = document.getElementById('scissors');
-    let score = document.getElementById('score').textContent;
-    let roundAnnounce = document.getElementById('roundAnnounce').textContent;
+    let score = document.getElementById('score');
+    let roundAnnounce = document.getElementById('roundAnnounce');
+  
 
     let rpsValues = {rock: 0, paper: 1, scissors:2};
     let valuesRps = {0: 'rock', 1: 'paper', 2: 'scissors'};
