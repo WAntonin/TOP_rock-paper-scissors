@@ -8,138 +8,24 @@
 <body>
 
 
-<div class = "game">
+<section class = "game">
   <h1>rock - paper - scissors</h1>
   <p> You play against the computer in 5 Rounds, the highest score wins.</p>
-  <ul>
-    <li><img id = "rock" src = "./images/rock.jpg" alt = "rock"></li>
-    <li><img id = "paper" src = "./images/paper.jpg" alt = "paper"></li>
-    <li><img id = "scissors" src = "./images/scissors.jpg" alt = "scissors"></li>
-  </ul>
+ 
+  <div class = "rps">
+    <img class = "rpsChoice" id = "rock" src = "./images/rock.jpg" alt = "rock">
+    <img class = "rpsChoice" id = "paper" src = "./images/paper.jpg" alt = "paper">
+    <img class = "rpsChoice" id = "scissors" src = "./images/scissors.jpg" alt = "scissors">
+  </div>
+    
+  
 
   <h2 id = "score">dfd</h2>
   <p id = "roundAnnounce">eff</p>
-</div>
+</section>
 
 
 
-  <script type = 'text/javascript'>
-
-    let rock = document.getElementById('rock');
-    let paper = document.getElementById('paper');
-    let scissors = document.getElementById('scissors');
-    let score = document.getElementById('score');
-    let roundAnnounce = document.getElementById('roundAnnounce');
-  
-
-    let rpsValues = {rock: 0, paper: 1, scissors:2};
-    let valuesRps = {0: 'rock', 1: 'paper', 2: 'scissors'};
-    
-    let playerScore = 0;
-    let computerScore = 0;
-    let roundNumber = 1;
-
-    
-
-
-    function computerPlay() {
-      //Give the computer's random selection as an rpsValue
-      let computerValue = Math.floor(Math.random() * Math.floor(3));
-      return computerValue;
-    }
-
-
-
-
-    function playerPlay(playerChoice) {
-      //convert player selection into corresponding rpsValue
-      return rpsValues[playerChoice];
-
-    }
-
-
-
-
-    function playRound(playerSelection, computerSelection) {
-      //determine the score and return an apropirate annouce & player score & computer score
-      //takes rpsValue input corresponding to the selected object (rock=0, paper=1, scissors=2)
-
-      //determine who win the round
-      let roundValue = (3 + playerSelection - computerSelection) % 3;
-      let rpsValues = {rock: 0, paper: 1, scissors:2};
-      let valuesRps = {0: 'rock', 1: 'paper', 2: 'scissors'};
-      let result;
-      
-      let computerPoint = 0;
-      let playerPoint = 0;
-
-      switch (roundValue) {
-        case 0:
-          roundAnnounce.textContent = "Equality: you both chose ";
-          break;
-        case 1:
-          roundAnnounce.textContent = "You win !: ";
-          playerPoint += 1;
-          break;
-        case 2:
-          roundAnnounce.textContent = "You Loose :-(: ";
-          computerPoint += 1;
-          break;          
-      }
-
-      return [result, playerPoint, computerPoint];
-    }
-    
-    
-    
-    
-    function match(roundNumber, playerScore, computerScore) {
-      //Anounce the winner after 5 rounds
-      if (roundNumber >= 5) {
-        if (playerScore > computerScore){
-        console.log("YOU WIN!!!!");
-        } else if (playerScore == computerScore) {
-        console.log("NO WINNERS");
-        } else {
-        console.log(" You loose :-(, try again.");
-        }
-
-        reset();
-      }
-    }
-
-
-
-
-    function reset() {
-      //Reset initial parameters
-      playerScore = 0;
-      computerScore = 0;
-      roundNumber = 1;
-    }
-
-
-
-
-    function play(playerChoice) {
-      //Record the score, count rounds, display score
-      let roundResult = playRound(playerPlay(playerChoice), computerPlay());
-      
-      playerScore += roundResult[1];
-      computerScore += roundResult[2];
-      score.textContent = "PLAYER: " + playerScore + " /// COMPUTER: " + computerScore;
-      roundNumber += 1;
-      console.log(roundNumber)
-      match(roundNumber, playerScore, computerScore);
-      }
-
-
-
-
-    rock.onclick = play('rock');
-    paper.onclick = play('paper');
-    scissors.onclick = play('scissors');    
-
-  </script>
+  <script type = "text/javascript" scr = "main.js"></script>
 </body>
 </html>

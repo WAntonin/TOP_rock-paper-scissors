@@ -1,11 +1,49 @@
-li img{
-    border: 10px black;
+@font-face {
+    font-family: 'quicksandbold';
+    src: url('./fonts/quicksand-bold-webfont.woff2') format('woff2'),
+         url('./fonts/quicksand-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'quicksandregular';
+    src: url('./fonts/quicksand-regular-webfont.woff2') format('woff2'),
+         url('./fonts/quicksand-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.game {
+    height: 50em;
+    width: 150em;
+    margin: 0 auto;
+}
+
+p {
+    font-family: 'quicksandregular';
+    font-size: 1.5em;
+} 
+
+.rps img{
+    border: 6px solid black;
+    margin: 4em;
+    border-radius: 1em;
+    max-height: 80%;
 }
 
 ul {
     list-style: none;
+    display: block;
+}
+
+li {
+    display: inline-block;
 }
 
 h1 {
-    font-size: 4em;
+    font-family: 'quicksandbold';
+    font-size: 6em;
 }
