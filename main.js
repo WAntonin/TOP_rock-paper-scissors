@@ -95,9 +95,7 @@ function displayMatchResult(matchMsg) {
 
 function play() {
   //Record the score, count rounds, display score
-  let roundResult = playRound(playerPlay(playerSelection), computerPlay());
-  
-  
+    
   if (roundNumber > 5) {
 
     if (playerScore > computerScore) {
