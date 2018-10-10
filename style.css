@@ -19,7 +19,8 @@
 .game {
     height: 50em;
     width: 150em;
-    margin: 0 auto;
+    margin: auto;
+    text-align: center;
 }
 
 p {
@@ -32,6 +33,14 @@ p {
     margin: 4em;
     border-radius: 1em;
     max-height: 80%;
+}
+
+.choice:active {
+    transform: scale(1.2);
+}
+
+.choice:hover {
+    box-shadow: 10px 10px 5px grey;
 }
 
 ul {

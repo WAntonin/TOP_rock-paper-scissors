@@ -1,13 +1,20 @@
-var score = document.getElementById('score');
-var roundAnnounce = document.querySelector('#roundAnnounce');
-var matchResult = document.querySelector('#rps');
+let score = document.getElementById('score');
+let roundAnnounce = document.querySelector('#roundAnnounce');
+let matchResult = document.querySelector('.rps');
 
-    
-let playerScore = 0;
-let computerScore = 0;
-let roundNumber = 1;
+//save the content of the <div class="rps"></div>
+let rpsImages = matchResult.innerHTML;
 
-let rpsValues = {rock: 0, paper: 1, scissors:2};
+
+var playerScore = 0;
+var computerScore = 0;
+var roundNumber = 1;
+
+score.textContent = "PLAYER: " + playerScore + " ||| COMPUTER: " + computerScore;
+
+rpsValues = {rock: 0, paper: 1, scissors:2};
+valuesRps = { 0: 'rock', 1: 'paper', 2: 'scissors' };
+
 
 
 function computerPlay() {
@@ -33,8 +40,6 @@ function playRound(playerSelection, computerSelection) {
 
   //determine who win the round
   let roundValue = (3 + playerSelection - computerSelection) % 3;
-  let valuesRps = { 0: 'rock', 1: 'paper', 2: 'scissors' };
-  let result;
 
   let computerPoint = 0;
   let playerPoint = 0;
@@ -52,35 +57,31 @@ function playRound(playerSelection, computerSelection) {
       computerPoint++;
       break;
   }
-  return [result, playerPoint, computerPoint];
+  return [playerPoint, computerPoint];
 
 }
     
     
     
     
-function match(roundNumber, playerScore, computerScore) {
-  //Anounce the winner after 5 rounds
-  if (roundNumber >= 5) {
-    if (playerScore > computerScore) {
-      matchResult.textContent = "YOU WIN!!!!";
-    } else if (playerScore == computerScore) {
-      matchResult.textContent = "NO WINNERS";
-    } else {
-      matchResult.textContent = " You loose :-(, try again.";
-    }
-  } else {
-  }
-}
-
-
-
-
 function reset() {
   //Reset initial parameters
+  matchResult.innerHTML = rpsImages;
+  roundNumber = 1;
   playerScore = 0;
   computerScore = 0;
-  roundNumber = 1;
+  score.textContent = "PLAYER: " + playerScore + " ||| COMPUTER: " + computerScore;
+}
+
+
+
+
+function displayMatchResult(matchMsg) {
+  //Anounce the winner after 5 rounds
+  matchResult.innerHTML = "<p id = matchResult>" + matchMsg + "</p>" + "<br> <button id = 'replay'>REPLAY</button>";
+  roundAnnounce.textContent = "";
+  var replay = document.querySelector('#replay');
+  replay.addEventListener('click', reset);
 }
 
 
@@ -90,10 +91,27 @@ function play() {
   //Record the score, count rounds, display score
   let roundResult = playRound(playerPlay(playerSelection), computerPlay());
   
-  playerScore += roundResult[1];
-  computerScore += roundResult[2];
-  score.textContent = "PLAYER: " + playerScore + " /// COMPUTER: " + computerScore;
-  roundNumber += 1;
+  
+  if (roundNumber > 5) {
+
+    if (playerScore > computerScore) {
+      let matchMsg = "YOU WIN!!!!";
+      displayMatchResult(matchMsg);
+    } else if (playerScore == computerScore) {
+      let matchMsg = "NO WINNERS";
+      displayMatchResult(matchMsg);
+    } else {
+      let matchMsg = " You loose :-(, try again.";
+      displayMatchResult(matchMsg);
+    }
+
+  } else {
+    let roundResult = playRound(playerPlay(playerSelection), computerPlay());
+    playerScore += roundResult[0];
+    computerScore += roundResult[1];
+    score.textContent = "PLAYER: " + playerScore + " ||| COMPUTER: " + computerScore;
+    roundNumber += 1;
+  }
 }
 
 const image = document.querySelectorAll('img.choice');
