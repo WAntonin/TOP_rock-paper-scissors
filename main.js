@@ -46,7 +46,7 @@ function playRound(playerSelection, computerSelection) {
 
   switch (roundValue) {
     case 0:
-      roundAnnounce.textContent = "Equality: you both chose " + valuesRps[playerSelection];
+      roundAnnounce.textContent = "Tie: you both chose " + valuesRps[playerSelection];
       break;
     case 1:
       roundAnnounce.textContent = "You win !: " + valuesRps[playerSelection] + " beats " + valuesRps[computerSelection];
@@ -65,8 +65,14 @@ function playRound(playerSelection, computerSelection) {
     
     
 function reset() {
-  //Reset initial parameters
+  //Reset the rps div
   matchResult.innerHTML = rpsImages;
+  var image = document.querySelectorAll('img.choice');
+  image.forEach((img) => {
+    img.addEventListener('click', () => {playerSelection = img.id});
+    img.addEventListener('click', play)
+  });
+  //reset the scores and round
   roundNumber = 1;
   playerScore = 0;
   computerScore = 0;
@@ -78,7 +84,7 @@ function reset() {
 
 function displayMatchResult(matchMsg) {
   //Anounce the winner after 5 rounds
-  matchResult.innerHTML = "<p id = matchResult>" + matchMsg + "</p>" + "<br> <button id = 'replay'>REPLAY</button>";
+  matchResult.innerHTML = "<p id = matchResult>" + matchMsg + "</p>" + "<br> <button class = 'button play' id = 'replay'>replay</button>";
   roundAnnounce.textContent = "";
   var replay = document.querySelector('#replay');
   replay.addEventListener('click', reset);
@@ -95,13 +101,13 @@ function play() {
   if (roundNumber > 5) {
 
     if (playerScore > computerScore) {
-      let matchMsg = "YOU WIN!!!!";
+      let matchMsg = "YOU WIN !";
       displayMatchResult(matchMsg);
     } else if (playerScore == computerScore) {
-      let matchMsg = "NO WINNERS";
+      let matchMsg = "TIE";
       displayMatchResult(matchMsg);
     } else {
-      let matchMsg = " You loose :-(, try again.";
+      let matchMsg = " YOU LOOSE";
       displayMatchResult(matchMsg);
     }
 
@@ -114,7 +120,7 @@ function play() {
   }
 }
 
-const image = document.querySelectorAll('img.choice');
+var image = document.querySelectorAll('img.choice');
 image.forEach((img) => {
   img.addEventListener('click', () => {playerSelection = img.id});
   img.addEventListener('click', play)
