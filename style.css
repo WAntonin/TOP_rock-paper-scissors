@@ -1,20 +1,21 @@
+body {
+    font-size: 15px;
+}
 .game {
-    height: 50em;
-    width: 150em;
     margin: auto;
     text-align: center;
 }
 
 p {
     font-family: 'quicksandregular';
-    font-size: 1.5em;
+    font-size: 1.5rem;
 } 
 
 .choice{
     border: 6px solid black;
-    margin: 4em;
-    border-radius: 1em;
-    max-height: 50%;
+    margin: 4rem;
+    border-radius: 1rem;
+    height: 12rem;
 }
 
 .choice:active {
@@ -36,26 +37,26 @@ li {
 
 h1 {
     font-family: 'quicksandbold';
-    font-size: 6em;
+    font-size: 6rem;
     text-transform: uppercase;
 }
 
 p#matchResult {
     font-family: 'quicksandbold';
-    font-size: 6em;
+    font-size: 6rem;
     color: red;
     text-shadow: 5px 5px 2px #b00606;
 }
 
 .button.play {
     font-family: 'quicksandbold';
-    font-size: 2em;
+    font-size: 2rem;
     text-transform: uppercase;
     color: white;
     background-color: black;
-    border: 0.2em solid black;
-    border-radius:0.5em;
-    margin-bottom: 2em;
+    border: 0.2rem solid black;
+    border-radius:0.5rem;
+    margin-bottom: 2rem;
 }
 
 .button.play:hover {
